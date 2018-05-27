@@ -1,0 +1,7 @@
+[package]
+name = "effects"
+version = "0.1.0"
+authors = ["Bujiraso <bujiraso@hotmail.com>"]
+
+[dependencies]
+jack = "0.6"

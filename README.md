@@ -14,5 +14,8 @@ These are running code samples for [Ricky Han's blog article on guitar effects](
 This means you're successfully plugged into jack through Rust's bindings.
 Congrats!
 
+# Example 2: Overdrive
+Same steps as above, but now the output's all dirty 'n stuff.
+
 # License
 Unknown. Contact rickyhan+blog@rickyhan.com
