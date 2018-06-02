@@ -1,11 +1,11 @@
 extern crate jack;
 
 mod effects;
-mod overdrive;
+mod delay;
 
 use std::io;
 use effects::{Effect, CtrlMsg};
-use overdrive::Overdrive;
+use delay::Delay;
 
 fn main() {
     let (client, _status) =
@@ -22,14 +22,14 @@ fn main() {
         .register_port("rasta_out_r", jack::AudioOut::default())
         .unwrap();
 
-    let mut overdrive = Overdrive::new();
+    let mut delay = Delay::new(client.buffer_size());
     let process_callback = move |_: &jack::Client, ps: &jack::ProcessScope| -> jack::Control {
         let out_a_p = out_a.as_mut_slice(ps);
         let out_b_p = out_b.as_mut_slice(ps);
         let in_b_p = in_b.as_slice(ps);
 
-        // Use the overdrive to process samples
-        overdrive.process_samples(in_b_p, out_a_p, out_b_p);
+        // Use the delay to process samples
+        delay.process_samples(in_b_p, out_a_p, out_b_p);
 
         jack::Control::Continue
     };
