@@ -22,7 +22,7 @@ fn main() {
         .register_port("rasta_out_r", jack::AudioOut::default())
         .unwrap();
 
-    let mut delay = Delay::new(client.buffer_size());
+    let mut delay = Delay::new();
     let process_callback = move |_: &jack::Client, ps: &jack::ProcessScope| -> jack::Control {
         let out_a_p = out_a.as_mut_slice(ps);
         let out_b_p = out_b.as_mut_slice(ps);
